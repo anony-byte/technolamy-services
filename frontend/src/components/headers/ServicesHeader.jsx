@@ -30,7 +30,7 @@ const services = [
             'textLeft': "50%",
             'textColor': "#bfbfbf"
         },
-        'inside': <WebDesign/>
+        'inside': <WebDesign />
     }, {
         'name': 'oil paintings',
         'color': 'linear-gradient(to bottom, rgb(50, 50, 50) 90%, transparent 90%)',
@@ -46,7 +46,7 @@ const services = [
             'textLeft': "40%",
             'textColor': "gray"
         },
-        'inside': <OilPaintings/>
+        'inside': <OilPaintings />
     }, {
         'name': 'Art Centre',
         'color': 'linear-gradient(to top, transparent 40%, rgb(70, 70, 70) 40%)',
@@ -58,23 +58,23 @@ const services = [
             'zIndex': 10,
             'pointerColor': 'rgb(85, 85, 85)',
             'mouseStarting': 670,
-            'mouseEnding': 100,
+            'mouseEnding': 50,
             'leftValue': 672.3046875,
             'textLeft': "10%",
             'textColor': "#f2f2f2"
         },
-        'inside': <ArtCentreHeader/>
+        'inside': <ArtCentreHeader />
     }
 ]
 
 export default function ServicesHeader() {
 
-    const [activeTarget, setActiveTarget] = useState(0);
+    const [activeTarget, setActiveTarget] = useState("Art Centre");
 
     const variants = {
-        'initial': {x: 1000},
-        'final': {x: 0, transition: {duration: .8, type: "spring"}},
-        'exit': {x: -5000, transition: {duration: 1}}
+        'initial': { x: 1000 },
+        'final': { x: 0, transition: { duration: .8, type: "spring" } },
+        'exit': { x: -5000, transition: { duration: 1 } }
     }
 
     const setActiveTargetHandler = target => {
@@ -85,13 +85,13 @@ export default function ServicesHeader() {
         <div className={styles.main}>
             <AnimatePresence>
                 {activeTarget == 0 && <motion.div variants={variants} key="technlamu"
-                initial="initial" animate="final" exit="exit" style={{left: "50%"}}
-                className={styles.name}>technolamy?</motion.div>}
+                    initial="initial" animate="final" exit="exit" style={{ left: "50%" }}
+                    className={styles.name}>technolamy?</motion.div>}
                 {services.map(curr =>
                     activeTarget === curr.name && <motion.div variants={variants}
-                    initial="initial" animate="final" exit="exit"
-                    key={curr.name} className={styles.name}
-                    style={{left: curr.styles.textLeft, color: curr.styles.textColor}}>
+                        initial="initial" animate="final" exit="exit"
+                        key={curr.name} className={styles.name}
+                        style={{ left: curr.styles.textLeft, color: curr.styles.textColor }}>
                         {curr.name}
                     </motion.div>
                 )}

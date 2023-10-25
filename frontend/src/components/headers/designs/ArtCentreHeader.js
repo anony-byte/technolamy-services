@@ -6,11 +6,11 @@ import {motion} from "framer-motion";
 const services = [
   {
     "name": "tattoo studio",
-    "image": "https://wallpapers.com/images/hd/skeleton-girl-hd-tattoo-f5g3sntxok2nminz.jpg",
+    
     "textColor": "white",
-    "description": "At Technolamy, we specialize in transforming your visions into remarkable inked masterpieces. Our skilled artists are here to make your tattoo dreams a reality, ensuring that each design tells a unique and compelling story."
-    // "image": "https://c4.wallpaperflare.com/wallpaper/254/1023/794/models-model-brunette-girl-wallpaper-preview.jpg"
-
+    "description": "At Technolamy, we specialize in transforming your visions into remarkable inked masterpieces. Our skilled artists are here to make your tattoo dreams a reality, ensuring that each design tells a unique and compelling story.",
+    "image": "https://images.unsplash.com/photo-1552627019-947c3789ffb5?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGF0dG9vJTIwYXJ0aXN0fGVufDB8fDB8fHww",
+    "image": "https://wallpapers.com/images/hd/skeleton-girl-hd-tattoo-f5g3sntxok2nminz.jpg",
   },{
     "name": "wrapping works",
     "image": "https://yeahmotor.com/wp-content/uploads/2019/05/carwrap13.jpg",
@@ -59,8 +59,8 @@ const ArtCentreHeader = () => {
           <button onClick={goToNextHandler}>next</button>
       </div>
       <motion.div key={`desc_${serviceIndex}`}
-      initial={{opacity: 0}}
-      animate={{opacity: 1}}
+      initial={{opacity: 0, scale: 1.1}}
+      animate={{opacity: 1, scale: 1}}
       transition={{delay: 1, duration: 1}}
       className={styles.desc}>
         {services[serviceIndex].description}
