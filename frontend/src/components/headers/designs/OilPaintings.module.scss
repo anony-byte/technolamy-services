@@ -1,0 +1,57 @@
+@font-face {
+    font-family: test;
+    src: url("../../../resources/fonts/JoeSandalmoe.otf");
+}
+
+.main{
+    background-color: rgba(0, 0, 0);
+    max-width: 100%;
+    height: 90%;
+    position: relative;
+
+    > .content{
+        position: absolute;
+        top: 55%;
+        left: 5%;
+        background-color: rgba(255, 255, 255);
+        border-radius: 3rem;
+        width: 60%;
+        // height: 50%;
+        font-family: 'Lato';
+        color: rgb(0, 0, 0);
+        padding: 3rem;
+        font-size: 2rem;
+        line-height: 3rem;
+        // filter: blur(20px);
+
+        > span{
+            font-size: 5rem;
+            font-weight: bolder;
+            font-family: test;
+        }
+    }
+
+    > .gallery{
+        width: 100%;
+        height: 70%;
+        // background-color: black;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        overflow-x: hidden;
+        // background-image: linear-gradient(rgba(0, 0, 0, 0.407), rgba(0, 0, 0, 0.185));
+        > div{
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            width: max-content;
+            // overflow: scroll;
+        > img{
+            height: 100%;
+            filter: grayscale(100%);
+            opacity: 0.8;
+            -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+        }}
+    }
+}

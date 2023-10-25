@@ -1,0 +1,117 @@
+@font-face {
+    font-family: test;
+    src: url("../../../resources/fonts/JoeSandalmoe.otf");
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: relative;
+
+    > .header{
+        width: 40%;
+        height: 20%;
+        font-family: 'Lato';
+        font-size: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1rem;
+        position: absolute;
+        top: 2%;
+        left: 2%;
+        // background-color: red;
+    }
+
+    > .desc{
+        width: 90%;
+        height: 20%;
+        left: 5%;
+        // background-color: red;
+        color: rgb(100, 100, 100);
+        line-height: 3rem;
+        // word-spacing: 1rem;
+        text-align: center;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 75%;
+    }
+
+    .buttons{
+        width: 30%;
+        height: 20%;
+        // background-color: red;
+        position: absolute;
+        top: 50%;
+        left: 60%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding:0.5rem 2rem;
+        box-sizing: border-box;
+
+        > button{
+            font-family: test;
+            display: flex;
+            text-transform: lowercase;
+            justify-content: center;
+            align-items: center;
+            font-size: 6rem;
+            font-weight: bolder;
+            background-color: transparent;
+            color: rgb(94, 94, 94);
+            height: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            padding: 0 3rem;
+            transition: all 0.3s;
+
+            &:hover{
+                // height: 50%;
+                // background-color: rgb(217, 217, 217);
+                color: white;
+                transform: scale(1.5);
+            }
+        }
+    }
+
+    .gallery{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60%;
+        background-color: transparent;
+        overflow-x: hidden;
+
+
+
+        > .images{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            height: 100%;
+            transform: translateX(-100%);
+            transition: transform 1s;
+            > img{
+                min-width: 100%;
+                // height: 90%;
+                object-fit: cover;
+                object-position: center;
+                filter: grayscale(100%);
+                -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+                mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+                }
+        }
+
+    }
+}
