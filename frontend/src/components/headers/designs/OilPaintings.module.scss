@@ -13,12 +13,12 @@
         position: absolute;
         top: 55%;
         left: 5%;
-        background-color: rgba(255, 255, 255);
+        // background-color: rgba(255, 255, 255);
         border-radius: 3rem;
         width: 60%;
         // height: 50%;
         font-family: 'Lato';
-        color: rgb(0, 0, 0);
+        color: rgb(103, 103, 103);
         padding: 3rem;
         font-size: 2rem;
         line-height: 3rem;
@@ -29,6 +29,79 @@
             font-weight: bolder;
             font-family: test;
         }
+    }
+
+    > .extra{
+        width: 40%;
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        // background-color: white;
+        overflow: hidden;
+        z-index: -100000;
+
+        .inner{
+            min-height: 100%;
+            max-height: 100%;
+            width: 100%;
+            // background-color: red;
+            // display: flex;
+            // justify-content: center;
+            // align-items: center;
+            position: relative;
+            > div{
+                width: 80%;
+                max-width: 80%;
+                top: 50%;
+                left: 10%;
+                font-size: 3rem;
+                font-weight: bolder;
+                text-transform: uppercase;
+                display: flex;
+                justify-content: flex-start;
+                font-weight: bolder;
+                position: absolute;
+                padding-left: 2rem;
+                // margin-left: -3rem;
+                // background-color: rgba(129, 129, 129, 0.3) !important;
+                background-image: linear-gradient( rgba(129, 129, 129, 0.05),  rgba(129, 129, 129, 0.3) 50%);
+                // outline:  white solid 5px ;
+                // outline-offset: 2rem;
+                // border: 5px solid gray;
+                box-sizing: border-box;
+                align-items: center;
+
+                &:first-child{
+                    // self portrait
+                    left: 20%;
+                    top: 10%;
+                    width: 60%;
+                    aspect-ratio: 3/2;
+                }
+
+                &:nth-child(2){
+                    // self portrait
+                    
+                    left: 20%;
+                    top: 10%;
+                    height: 80%;
+                    aspect-ratio: 3/4;
+                }
+
+                &:last-child{
+                    //wall decors
+                    left: 25%;
+                    padding-left: 1rem;
+                    top: 5%;
+                    height: 90%;
+                    width: 40%;
+                    // aspect-ratio: 1/1;
+                }
+            }
+        }
+        // background-color: rgba(128, 128, 128, 0.259);
     }
 
     > .gallery{
@@ -50,7 +123,7 @@
         > img{
             height: 100%;
             filter: grayscale(100%);
-            opacity: 0.8;
+            opacity: 1;
             // -webkit-box-reflect: below 3rem;
             -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));

@@ -1,15 +1,11 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useTransform, useScroll } from 'framer-motion';
 import React, { useState } from 'react'
 import ArtCentreHeader from './designs/ArtCentreHeader';
 import OilPaintings from './designs/OilPaintings';
 import WebDesign from './designs/WebDesign';
 import ServiceHeader from './ServiceHeader';
 import styles from "./ServicesHeader.module.scss";
-
-
-//540 - 600
-//610 - 660
-//670-740
+import { useLocation } from 'react-router';
 
 const services = [
     {
@@ -48,7 +44,7 @@ const services = [
         },
         'inside': <OilPaintings />
     }, {
-        'name': 'Art Centre',
+        'name': 'art centre',
         'color': 'linear-gradient(to top, transparent 40%, rgb(70, 70, 70) 40%)',
         'styles': {
             'width': '5vw',
@@ -69,7 +65,12 @@ const services = [
 
 export default function ServicesHeader() {
 
-    const [activeTarget, setActiveTarget] = useState("Art Centre");
+    const {scrollYProgress} = useScroll();
+    const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, .5]);
+
+    const location = useLocation().pathname.split("/")[1];
+    const [activeTarget, setActiveTarget] = useState(location === '' ? 0: location.replace("-", " "));
 
     const variants = {
         'initial': { x: 1000 },
@@ -77,33 +78,31 @@ export default function ServicesHeader() {
         'exit': { x: -5000, transition: { duration: 1 } }
     }
 
-    const setActiveTargetHandler = target => {
-        setActiveTarget(target);
-    }
+    const setActiveTargetHandler = target => setActiveTarget(target);
 
-    return (
-        <div className={styles.main}>
+    return <div className={styles.main}>
             <AnimatePresence>
                 {activeTarget == 0 && <motion.div variants={variants} key="technlamu"
                     initial="initial" animate="final" exit="exit" style={{ left: "50%" }}
-                    className={styles.name}>technolamy?</motion.div>}
+                    className={styles.name}>technolamy</motion.div>}
                 {services.map(curr =>
                     activeTarget === curr.name && <motion.div variants={variants}
                         initial="initial" animate="final" exit="exit"
                         key={curr.name} className={styles.name}
-                        style={{ left: curr.styles.textLeft, color: curr.styles.textColor }}>
+                        style={{
+                            left: curr.styles.textLeft,
+                            color: curr.styles.textColor,
+                            y,
+                            scale
+                        }}>
                         {curr.name}
                     </motion.div>
                 )}
             </AnimatePresence>
-            {/* <div className={styles.content}>
-            Greetings, and a warm welcome to TECHNOLAMY, your destination for infusing innovation into your enterprises and discovering the right solutions to meet your requirements.
-            </div> */}
             <div className={styles.container}>
                 {services.map(curr =>
                     <ServiceHeader key={curr.name} setActiveTargetHandler={setActiveTargetHandler} name={curr.name} activeTarget={activeTarget} color={curr.color} styles={curr.styles} inside={curr.inside} />
                 )}
             </div>
         </div>
-    )
 }

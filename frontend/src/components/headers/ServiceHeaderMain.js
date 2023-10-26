@@ -4,7 +4,7 @@ import styles from "./ServiceHeader.module.scss";
 
 
 const ServiceHeaderMain = props => {
-  console.log(props)
+  
   return (
     <motion.div className={styles.main} 
     onClick={() => props.widthHandler}

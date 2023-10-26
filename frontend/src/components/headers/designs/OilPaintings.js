@@ -1,40 +1,83 @@
 import React from 'react'
 import styles from './OilPaintings.module.scss';
-import {motion} from "framer-motion"
+import {motion, useTransform, useScroll} from "framer-motion";
+// import image from "../../../resources/images/famous-painting-hfni7fg4bqoiv3ae.jpg"
+
+const canvas = [
+  {
+    "name": "self portraits",
+    "width": "50%",
+    "height": "50%"
+  },{
+    "name": "wall decor paintings",
+    "width": "50%",
+    "height": "50%"
+  },{
+    "name": "Family portrait paintings",
+    "width": "50%",
+    "height": "50%"
+  }
+]
+
+const importAll = r => r.keys().map(r);
+const filenames = importAll(require.context("../../../resources/images/", false, /\.(png|jpe?g|svg)$/));
 
 const OilPaintings = () => {
+
+  const {scrollYProgress} = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, -300]);
+
   const variants = {
     'initial': {x: 0},
     'final': {translate: "-50%", transition: {duration: 30, repeat: Infinity, ease: "linear", delay: 1}}
   }
+
+  const canvasVariants = {
+    'initial': {},
+    'final': {}
+  }
+
+  const canvasVariantsInner = {
+    'initial': {},
+    'final': {x: [-500, 0, 0, 0, 0, 500], opacity: [0, 1, 1, 1, 1, 0.5], transition: {duration: 3, repeatDelay: 6, repeat: Infinity}}
+  }
+
+  const imagesList = filenames.map(curr => <img src={curr} alt="some random name"/>);
+
   return <div className={styles.main}>
-    <motion.div className={styles.content}
-    initial={{opacity: 0, scale: 1.1}}
+    <motion.div
+    className={styles.content}
+    initial={{opacity: 0, scale: 1.2}}
     animate={{opacity: 1, scale: 1}}
-    transition={{delay: 1.5, duration: 1}}
+    transition={{delay: 1, duration: 1}}
+    style={{y}}
     >
-        {/* Welcome to our world of timeless artistry and expression, where every brushstroke tells a story. At [Your Website Name], we invite you to explore the enchanting realm of oil paintings. Our curated collection showcases the beauty and emotion of oil on canvas, offering a window into the past, present, and future of artistic creation. Immerse yourself in the rich textures, vivid colors, and evocative imagery that grace our canvases. Whether you're a seasoned art connoisseur or a first-time collector, we're here to help you discover and acquire the perfect oil painting to adorn your space and inspire your soul. */}
         Explore our curated collection of oil paintings at <span>technolamy </span>, where art comes to life and transforms your space into a realm of vivid expression and emotion
     </motion.div>
     <motion.div className={styles.gallery}
     >
         <motion.div variants={variants} initial="initial" animate="final">
-            <img src='https://w0.peakpx.com/wallpaper/218/841/HD-wallpaper-oil-painting-artwork-men-portrait-classical-art.jpg'/>
-            <img src="https://wallpapers.com/images/featured/famous-painting-hfni7fg4bqoiv3ae.jpg"/>
-            <img src="https://c4.wallpaperflare.com/wallpaper/783/16/970/famous-paintings-s-hd-famous-paintings-s-hd-wallpaper-preview.jpg"/>
-            <img src="https://media.newyorker.com/photos/5968e0f3b39b406ba7f0078d/master/w_2560%2Cc_limit/Bentley-Charlotte-Salomon_01.jpg"/>
-            <img src="https://i.pinimg.com/1200x/16/d9/de/16d9debacf2f56c525d9f38dc7aa0fe0.jpg"/>
-            <img src="https://c1.wallpaperflare.com/preview/1002/655/719/kids-black-and-white-photography-child.jpg"/>
-
-            <img src='https://w0.peakpx.com/wallpaper/218/841/HD-wallpaper-oil-painting-artwork-men-portrait-classical-art.jpg'/>
-            <img src="https://wallpapers.com/images/featured/famous-painting-hfni7fg4bqoiv3ae.jpg"/>
-            <img src="https://c4.wallpaperflare.com/wallpaper/783/16/970/famous-paintings-s-hd-famous-paintings-s-hd-wallpaper-preview.jpg"/>
-            <img src="https://media.newyorker.com/photos/5968e0f3b39b406ba7f0078d/master/w_2560%2Cc_limit/Bentley-Charlotte-Salomon_01.jpg"/>
-            <img src="https://c4.wallpaperflare.com/wallpaper/783/16/970/famous-paintings-s-hd-famous-paintings-s-hd-wallpaper-preview.jpg"/>
-            <img src="https://c1.wallpaperflare.com/preview/1002/655/719/kids-black-and-white-photography-child.jpg"/>
+            {imagesList}
+            {imagesList}
         </motion.div>
     </motion.div>
+    <motion.div className={styles.extra}>
+      <motion.div className={styles.inner}
+      variants={canvasVariants}
+      initial="initial"
+      animate="final"
+      transition={{
+        staggerChildren: 3
+      }}
+      >
+          <motion.div variants={canvasVariantsInner}>WALL DECOR PAINTINGS</motion.div>
+          <motion.div variants={canvasVariantsInner}>family <br/>portraits</motion.div>
+          <motion.div variants={canvasVariantsInner}>self portraits</motion.div>
+          
+      </motion.div>
+    </motion.div>
   </div>
+
 }
 
 export default OilPaintings

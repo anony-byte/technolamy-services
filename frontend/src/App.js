@@ -1,11 +1,9 @@
 import Header from "./components/headers/Header";
+import {RouterProvider} from 'react-router-dom';
+import Routes from "./routes/Routes";
 
 function App() {
-  return (
-    <div>
-      <Header/>
-    </div>
-  );
+  return <RouterProvider router={Routes}/>
 }
 
 export default App;

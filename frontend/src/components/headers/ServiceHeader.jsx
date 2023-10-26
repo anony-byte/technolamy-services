@@ -2,11 +2,11 @@ import styles from "./ServiceHeader.module.scss";
 import { motion, } from "framer-motion";
 import ServiceHeaderMain from './ServiceHeaderMain';
 import { useRef, useState } from "react";
-
-
-
+import { useNavigate } from "react-router";
 
 const ServiceHeader = props => {
+
+  const navigator = useNavigate();
 
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
   const containerRef = useRef();
@@ -20,14 +20,11 @@ const ServiceHeader = props => {
       }
     })
 
-    // console.log(event.pageX);
-    // console.log(left);
-
-    console.log(event.pageX - left);
   }
 
   const widthHandler = () => {
     props.setActiveTargetHandler(props.name);
+    navigator(`${props.name.replace(" ", "-")}`);
   }
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from "./ArtCentre.module.scss";
-import {motion} from "framer-motion";
+import {motion, useTransform, useScroll} from "framer-motion";
 
 
 const services = [
@@ -29,6 +29,8 @@ const services = [
 const ArtCentreHeader = () => {
 
   const [serviceIndex, setServiceIndex] = useState(0);
+  const {scrollYProgress} = useScroll();
+  const y = useTransform(scrollYProgress, [0, .5], [0, 200]);
 
   const goToPrevHandler = () => {
     setServiceIndex(prev => (services.length + (prev - 1))%services.length)
@@ -46,7 +48,7 @@ const ArtCentreHeader = () => {
           </div>
       </div>
       <motion.div className={styles.header}
-      style={{color: services[serviceIndex].textColor}}
+      style={{color: services[serviceIndex].textColor, y}}
       key={serviceIndex}
       initial={{x: -500, opacity: 0}}
       animate={{x: 0, opacity: 1}}
