@@ -14,7 +14,7 @@ const Routes = createBrowserRouter([
         ]},
         {path: "/art-centre", element: <ArtCentre/>, children: [
             {path: ":id", element: <Gallery/>},
-            {path: "booking", element: <Booking/>}
+            {path: "booking", element: <Modal><Booking/></Modal>}
         ]}
     ]},
     {path: "/booking", element: <Booking/>}
