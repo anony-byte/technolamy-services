@@ -37,7 +37,7 @@ const ServiceHeader = props => {
         ref={containerRef}
         key="small"
         style={{
-          cursor: "none",
+          cursor: "pointer", //this is curspr customization
           backgroundImage: props.color,
           height: props.styles.height,
           position: 'relative',
@@ -46,7 +46,7 @@ const ServiceHeader = props => {
           zIndex: props.activeTarget === props.name ? 1 : props.styles.zIndex
         }}
       >
-        <motion.div
+        {/* <motion.div this is curspr customization
 
           animate={{ x: pointer.x, y: pointer.y }}
           style={{
@@ -58,7 +58,7 @@ const ServiceHeader = props => {
             visibility: pointer.x > 10 && pointer.x < props.styles.mouseEnding ? "visible" : "hidden"
           }}>
 
-        </motion.div>
+        </motion.div> */}
 
       </motion.div>}
       {props.activeTarget === props.name &&

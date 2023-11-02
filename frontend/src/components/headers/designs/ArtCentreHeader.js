@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import styles from "./ArtCentre.module.scss";
 import {motion, useTransform, useScroll} from "framer-motion";
 
+const importAll = r => r.keys().map(r);
+const filenames = importAll(require.context("../../../resources/artcentreimages/", false, /\.(png|jpe?g|svg)$/));
+
 
 const services = [
   {
@@ -9,17 +12,18 @@ const services = [
     
     "textColor": "white",
     "description": "At Technolamy, we specialize in transforming your visions into remarkable inked masterpieces. Our skilled artists are here to make your tattoo dreams a reality, ensuring that each design tells a unique and compelling story.",
-    "image": "https://images.unsplash.com/photo-1552627019-947c3789ffb5?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGF0dG9vJTIwYXJ0aXN0fGVufDB8fDB8fHww",
-    "image": "https://wallpapers.com/images/hd/skeleton-girl-hd-tattoo-f5g3sntxok2nminz.jpg",
+    // "image": "https://wallpapers.com/images/hd/skeleton-girl-hd-tattoo-f5g3sntxok2nminz.jpg",
+    "image": filenames[1]
   },{
     "name": "wrapping works",
-    "image": "https://yeahmotor.com/wp-content/uploads/2019/05/carwrap13.jpg",
+    // "image": "https://yeahmotor.com/wp-content/uploads/2019/05/carwrap13.jpg",
+    "image": filenames[2],
     "textColor": "white",
     "description": "Upgrade your vehicle's look with Technolamy Wraps. We're experts at turning cars, motorcycles, and more into stunning works of art. Explore our options and see your ride transform from the ordinary to the extraordinary."
   },{
     "name": "stickering",
-    // "image": "https://i.pinimg.com/originals/60/11/c6/6011c6359e706ba88cf2e83829fb87c5.jpg",
-    "image": "https://c4.wallpaperflare.com/wallpaper/256/284/998/apple-style-wallpaper-preview.jpg",
+    // "image": "https://c4.wallpaperflare.com/wallpaper/256/284/998/apple-style-wallpaper-preview.jpg",
+    "image": filenames[0],
     "textColor": "white",
     "description": "Elevate your ride with Technolamy. We specialize in bike stickers and custom number plate designs that add a touch of uniqueness to your motorcycle. Explore our creative solutions and make your bike stand out on the road"
   }
@@ -44,7 +48,7 @@ const ArtCentreHeader = () => {
     <div className={styles.main}>
       <div className={styles.gallery}>
           <div className={styles.images} style={{transform: `translateX(-${+100* serviceIndex}%)`}}>
-            {services.map(curr => <img src={curr.image} alt={curr.name}/>)}
+            {services.map(curr => <img src={curr.image} alt={curr.name} key={curr.name}/>)}
           </div>
       </div>
       <motion.div className={styles.header}

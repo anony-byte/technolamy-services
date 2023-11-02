@@ -1,0 +1,14 @@
+.main{
+    background-color: rgba(255, 0, 0, 0.773);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    z-index: 1000001;
+
+    > .form{
+        width: 60%;
+        
+    }
+}

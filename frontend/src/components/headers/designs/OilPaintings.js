@@ -42,7 +42,7 @@ const OilPaintings = () => {
     'final': {x: [-500, 0, 0, 0, 0, 500], opacity: [0, 1, 1, 1, 1, 0.5], transition: {duration: 3, repeatDelay: 6, repeat: Infinity}}
   }
 
-  const imagesList = filenames.map(curr => <img src={curr} alt="some random name"/>);
+  const imagesList = filenames.map(curr => <img src={curr} alt="some random name" key={curr}/>);
 
   return <div className={styles.main}>
     <motion.div

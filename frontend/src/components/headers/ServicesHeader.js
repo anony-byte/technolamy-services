@@ -1,11 +1,12 @@
 import { AnimatePresence, motion, useTransform, useScroll } from 'framer-motion';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ArtCentreHeader from './designs/ArtCentreHeader';
 import OilPaintings from './designs/OilPaintings';
 import WebDesign from './designs/WebDesign';
 import ServiceHeader from './ServiceHeader';
 import styles from "./ServicesHeader.module.scss";
 import { useLocation } from 'react-router';
+import HeaderNavigation from './HeaderNavigation';
 
 const services = [
     {
@@ -63,14 +64,21 @@ const services = [
     }
 ]
 
-export default function ServicesHeader() {
+export default function ServicesHeader(props) {
 
-    const {scrollYProgress} = useScroll();
+    const { scrollYProgress } = useScroll();
     const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
     const scale = useTransform(scrollYProgress, [0, 1], [1, .5]);
-
+    
     const location = useLocation().pathname.split("/")[1];
-    const [activeTarget, setActiveTarget] = useState(location === '' ? 0: location.replace("-", " "));
+    var finalRender = props.headerRender || location === '' ? 0 : location.replace("-", " ")
+    const [activeTarget, setActiveTarget] = useState(finalRender);
+
+    useEffect(() => {
+        if(props.headerRender !== null){
+            setActiveTarget(props.headerRender);
+        }
+    }, [props?.headerRender])
 
     const variants = {
         'initial': { x: 1000 },
@@ -81,28 +89,32 @@ export default function ServicesHeader() {
     const setActiveTargetHandler = target => setActiveTarget(target);
 
     return <div className={styles.main}>
-            <AnimatePresence>
-                {activeTarget == 0 && <motion.div variants={variants} key="technlamu"
-                    initial="initial" animate="final" exit="exit" style={{ left: "50%" }}
-                    className={styles.name}>technolamy</motion.div>}
-                {services.map(curr =>
-                    activeTarget === curr.name && <motion.div variants={variants}
-                        initial="initial" animate="final" exit="exit"
-                        key={curr.name} className={styles.name}
-                        style={{
-                            left: curr.styles.textLeft,
-                            color: curr.styles.textColor,
-                            y,
-                            scale
-                        }}>
-                        {curr.name}
-                    </motion.div>
-                )}
-            </AnimatePresence>
-            <div className={styles.container}>
-                {services.map(curr =>
-                    <ServiceHeader key={curr.name} setActiveTargetHandler={setActiveTargetHandler} name={curr.name} activeTarget={activeTarget} color={curr.color} styles={curr.styles} inside={curr.inside} />
-                )}
-            </div>
+        <HeaderNavigation />
+        <div className={styles.home}>
+            
         </div>
+        <AnimatePresence>
+            {activeTarget == 0 && <motion.div variants={variants} key="technlamu"
+                initial="initial" animate="final" exit="exit" style={{ left: "50%" }}
+                className={styles.name}>technolamy</motion.div>}
+            {services.map(curr =>
+                activeTarget === curr.name && <motion.div variants={variants}
+                    initial="initial" animate="final" exit="exit"
+                    key={curr.name} className={styles.name}
+                    style={{
+                        left: curr.styles.textLeft,
+                        color: curr.styles.textColor,
+                        y,
+                        scale
+                    }}>
+                    {curr.name}
+                </motion.div>
+            )}
+        </AnimatePresence>
+        <div className={styles.container}>
+            {services.map(curr =>
+                <ServiceHeader key={curr.name} setActiveTargetHandler={setActiveTargetHandler} name={curr.name} activeTarget={activeTarget} color={curr.color} styles={curr.styles} inside={curr.inside} />
+            )}
+        </div>
+    </div>
 }
