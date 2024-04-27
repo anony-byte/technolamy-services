@@ -1,16 +1,23 @@
-import React from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
-import Header from '../headers/Header'
+import React from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import Header from "../headers/Header";
 import styles from "./Home.module.scss";
+import HomePage from "../../pages/HomePage";
 
 const Home = () => {
-
   const location = useLocation();
+  console.log(location);
 
-  return <div className={styles.main}>
-      <div><Header headerRender={location.state}/></div>
-      <div className={styles.container}><Outlet/></div>
+  return (
+    <div className={styles.main}>
+      <div>
+        <Header headerRender={location.state} />
+      </div>
+      <div className={styles.container}>
+        {(location.pathname == '/' || location.pathname === '' || location.pathname.includes("explore")) ? <HomePage /> : <Outlet />}
+      </div>
     </div>
-}
+  );
+};
 
-export default Home
+export default Home;

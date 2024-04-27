@@ -36,7 +36,7 @@ const services = [
 const ArtCentre = () => {
   return (
     <div className={styles.main}>
-      <AppointmentButton/>
+      <AppointmentButton for="art-centre" name="book an appointment"/>
       <div className={styles.services}>
         {services.map(curr=> <Link to={curr.name} key={curr.name}><motion.div className={styles.service}
         style={{

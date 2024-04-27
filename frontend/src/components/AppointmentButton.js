@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 const AppointmentButton = props => {
   return <motion.div className={styles.main}
   >
-    <Link to="booking">{props.name || "book an appointment"}</Link>
+    <Link to={`/booking?for=${props.for}`}>{props.name || "book an appointment"}</Link>
   </motion.div>
 }
 

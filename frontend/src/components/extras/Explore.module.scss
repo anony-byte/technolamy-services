@@ -1,0 +1,13 @@
+.o{
+    background-color: rgb(16, 16, 16);
+    color: gray;
+    font-weight: 300;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    transition: all .5s;
+    transform: rotate(-20deg);
+    &:hover{
+        scale: 1.5;
+        transform: rotate(20deg);
+    }
+}

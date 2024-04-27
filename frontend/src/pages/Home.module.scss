@@ -1,0 +1,115 @@
+.main{
+    // background-color: white;
+    height: 100vh;
+    position: relative;
+    width: 100vw;
+
+    >.circle2{
+        aspect-ratio: 1/1;
+        position: absolute;
+        border-radius: 50%;
+        top: 55%;
+        left: 75%;
+        width: 25%;
+        border-radius: 100% 0 0% 0;
+        background-color: rgb(15, 15, 15);
+    }
+    .circles{
+        width: 100%;
+        height: 100%;
+        z-index: -10000;
+        position: relative;
+
+        > div{
+            position: absolute;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            &:first-child{
+                background-color: rgb(23, 23, 23);
+                width: 10%;
+                top: 5%;
+                left: 40%;
+            }
+            &:nth-child(2){
+                background-color: rgb(33, 33, 33);
+                width: 10%;
+                top: 70%;
+                left: 10%;
+            }
+            &:nth-child(3){
+                background-color: rgb(19, 19, 19);
+                width: 5%;
+                top: 20%;
+                left: 90%;
+            }
+            &:nth-child(4){
+                background-color: rgb(19, 19, 19);
+                width: 15%;
+                top: 50%;
+                left: 50%;
+            }
+        }
+    }
+
+    > .explore{
+        text-transform: uppercase;
+        font-weight: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 70%;
+        height: 20%;
+        font-family: 'Lato';
+        font-size: 15rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+
+        > div{
+            
+            color: white;
+            transition: transform .3s;
+            margin: 0 1rem;
+            z-index: -100020;
+
+            &:nth-child(even){
+                
+                transform: rotate(-20deg);
+            }
+            &:nth-child(odd){
+                transform: rotate(25deg);
+            }
+
+
+            &:nth-child(5){
+                transform: rotate(10deg);
+            }
+
+            &:nth-child(n + 6){
+                position: relative;
+            }
+
+            &:nth-child(n+2):nth-child(-n+5) {
+                position: relative;
+                left: -15%;
+            }
+
+            &:first-child{
+                z-index: 100020;
+                position: relative;
+                left: 40%;
+                transform: rotate(0deg);
+            }
+
+            &:hover{
+                & ~ div {
+                    transform: rotate(0deg);
+                }
+            }
+        }
+    }
+
+
+}

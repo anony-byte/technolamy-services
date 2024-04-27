@@ -1,0 +1,45 @@
+.main{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(15, 15, 15, .9);
+    z-index: 230000000;
+    animation: scaler .5s forwards cubic-bezier(.38,.38,.51,.75);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0%;
+}
+
+@keyframes scaler {
+
+    0%{
+        border-radius: 50%;
+        width: 2vw;
+        height: 2vw;
+    }
+
+    50%{
+        border-radius: 50%;
+        width: 50vw;
+        height: 50vw;
+    }
+
+    75%{
+        border-radius: 50%;
+        width: 75vw;
+        height: 75vw;
+    }
+
+    90%{
+        border-radius: 50%;
+        width: 95vw;
+        height: 95vw;
+    }
+
+    100%{
+        width: 100vw;
+        height: 100vh;
+    }
+    
+}
