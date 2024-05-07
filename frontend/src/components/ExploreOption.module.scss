@@ -1,5 +1,16 @@
 .main{
-    width: 50vw;
+    width: 40vw;
     height: 40vh;
-    background-color: red;
+    position: absolute;
+    z-index: inherit;
+
+    > img{
+        width: 100%;
+        overflow: hidden;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: grayscale(100%);
+    }
+    // background-image: url("../resources/artcentreimages/tattoo.jpeg") !important;
 }
