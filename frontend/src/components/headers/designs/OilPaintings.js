@@ -1,30 +1,9 @@
 import React from "react";
 import styles from "./OilPaintings.module.scss";
 import { motion, useTransform, useScroll } from "framer-motion";
-// import image from "../../../resources/images/famous-painting-hfni7fg4bqoiv3ae.jpg"
-
-const canvas = [
-  {
-    name: "self portraits",
-    width: "50%",
-    height: "50%",
-  },
-  {
-    name: "wall decor paintings",
-    width: "50%",
-    height: "50%",
-  },
-  {
-    name: "Family portrait paintings",
-    width: "50%",
-    height: "50%",
-  },
-];
-
-const importAll = (r) => r.keys().map(r);
-const filenames = importAll(
-  require.context("../../../resources/images/", false, /\.(png|jpe?g|svg)$/)
-);
+import ImageImport from "../../../globals/ImageImport";
+import {canvas} from "../../../globals/Globals";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const OilPaintings = () => {
   const { scrollYProgress } = useScroll();
@@ -52,8 +31,8 @@ const OilPaintings = () => {
     },
   };
 
-  const imagesList = filenames.map((curr) => (
-    <img loading="lazy" src={curr} alt="some random name" key={curr} />
+  const imagesList = ImageImport("Images").map((curr) => (
+    <LazyLoadImage loading="lazy" src={curr} alt="some random name" key={curr} />
   ));
 
   return (
@@ -85,14 +64,9 @@ const OilPaintings = () => {
             staggerChildren: 3,
           }}
         >
-          <motion.div variants={canvasVariantsInner}>
-            WALL DECOR PAINTINGS
-          </motion.div>
-          <motion.div variants={canvasVariantsInner}>
-            family <br />
-            portraits
-          </motion.div>
-          <motion.div variants={canvasVariantsInner}>self portraits</motion.div>
+          {canvas.map(canvas => <motion.div variants={canvasVariantsInner}>
+            {canvas.name}
+          </motion.div>)}
         </motion.div>
       </motion.div>
     </div>

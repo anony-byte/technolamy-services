@@ -3,7 +3,6 @@ import Explore from "../components/extras/Explore";
 import styles from "./Home.module.scss";
 
 const HomePage = () => {
-  console.log("vuboiu");
   const explore = [<Explore/>, "e", "x", "p", "l", "r", "e", ".", ".", "."];
 
   return <div className={styles.main}>

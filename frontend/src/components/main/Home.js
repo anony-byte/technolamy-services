@@ -7,14 +7,20 @@ import HomePage from "../../pages/HomePage";
 const Home = () => {
   const location = useLocation();
   console.log(location);
-
+  
   return (
     <div className={styles.main}>
       <div>
-        <Header headerRender={location.state} />
+        <Header/>
       </div>
       <div className={styles.container}>
-        {(location.pathname == '/' || location.pathname === '' || location.pathname.includes("explore")) ? <HomePage /> : <Outlet />}
+        {location.pathname == "/" ||
+        location.pathname === "" ||
+        location.pathname.includes("explore") ? (
+          <HomePage />
+        ) : (
+          <Outlet />
+        )}
       </div>
     </div>
   );

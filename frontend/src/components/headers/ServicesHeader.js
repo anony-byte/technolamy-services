@@ -78,16 +78,23 @@ export default function ServicesHeader(props) {
 
   const location = useLocation().pathname.split("/")[1];
   var finalRender =
-    props.headerRender || location === "" || location === "explore"
+    location === "" || location === "explore"
       ? 0
       : location.replace("-", " ");
+
   const [activeTarget, setActiveTarget] = useState(finalRender);
 
+  // useEffect(() => {
+  //   if (props.headerRender !== null) {
+  //     console.log(props.headerRender);
+  //     setActiveTarget(props.headerRender);
+  //   }
+  // }, [props?.headerRender]);
+
   useEffect(() => {
-    if (props.headerRender !== null) {
-      setActiveTarget(props.headerRender);
-    }
-  }, [props?.headerRender]);
+    console.log(finalRender);
+    setActiveTarget(finalRender);
+  }, [finalRender]);
 
   const variants = {
     initial: { x: 1000 },
@@ -102,7 +109,7 @@ export default function ServicesHeader(props) {
       <HeaderNavigation />
       <div className={styles.home}></div>
       <AnimatePresence>
-        {activeTarget == 0 && (
+        {activeTarget === 0 && (
           <motion.div
             variants={variants}
             key="technolamy"

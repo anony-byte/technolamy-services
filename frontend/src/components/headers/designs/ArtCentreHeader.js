@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import styles from "./ArtCentre.module.scss";
 import { motion, useTransform, useScroll } from "framer-motion";
+import ImageImport from "../../../globals/ImageImport";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
-const importAll = (r) => r.keys().map(r);
-const filenames = importAll(
-  require.context(
-    "../../../resources/artcentreimages/",
-    false,
-    /\.(png|jpe?g|svg)$/
-  )
-);
+const filenames = ImageImport("ArtCentreImages");
 
 const services = [
   {
@@ -60,7 +55,7 @@ const ArtCentreHeader = () => {
           style={{ transform: `translateX(-${+100 * serviceIndex}%)` }}
         >
           {services.map((curr) => (
-            <img
+            <LazyLoadImage
               loading="lazy"
               src={curr.image}
               alt={curr.name}

@@ -1,11 +1,17 @@
-const importAll = (r) => r.keys().map(r);
-
-export const filesInFolder = (path, pattern) => {
-  return importAll(
-    require.context(
-      path,
-      false,
-      pattern
-    )
-  );
-};
+export const canvas = [
+  {
+    name: "wall decor paintings",
+    width: "50%",
+    height: "50%",
+  },
+  {
+    name: "Family portrait paintings",
+    width: "50%",
+    height: "50%",
+  },
+  {
+    name: "self portraits",
+    width: "50%",
+    height: "50%",
+  },
+];

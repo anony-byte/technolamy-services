@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 const ServiceHeader = props => {
 
   const navigator = useNavigate();
+  console.log();
 
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
   const containerRef = useRef();

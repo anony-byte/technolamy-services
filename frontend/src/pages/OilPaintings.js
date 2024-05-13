@@ -3,23 +3,22 @@ import styles from "./OilPaintings.module.scss";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import ImageImport from "../globals/ImageImport";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const OilPaintings = () => {
-  const importAll = (r) => r.keys().map(r);
-  const filenames = importAll(
-    require.context("../resources/images/", false, /\.(png|jpe?g|svg)$/)
-  );
+  const filenames = ImageImport("Images");
   const galleryRefs = useRef([]);
   const [imageSelected, setImageSelected] = useState(1);
 
   const imagesList = filenames.map((curr, index) => (
-    <img
+    <LazyLoadImage
+      key={curr}
       loading="lazy"
       onClick={() => galleryMovementHandler(index)}
       ref={(el) => (galleryRefs.current[index] = el)}
       src={curr}
       alt="some random name"
-      key={curr}
     />
   ));
   const imageDescriptionList = [
@@ -54,7 +53,7 @@ const OilPaintings = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <img loading="lazy" src={filenames[imageSelected - 1]} />
+            <LazyLoadImage loading="lazy" src={filenames[imageSelected - 1]} />
           </motion.div>
           <motion.div
             className={styles.description}

@@ -1,29 +1,32 @@
 import ExploreOption from "../components/ExploreOption";
 import styles from "./ExplorePage.module.scss";
 import {motion} from "framer-motion";
+import ImportImages from "../globals/ImageImport";
+
+const exploreImages = ImportImages("ExploreImages");
 
 const services = [{
-    name: "Web Sites",
-    style: {top: '10%', left: '15%'},
-    image: "https://bubble.io/blog/content/images/size/w600/2023/07/business-website-design.png",
+    name: "web sites",
+    style: {top: '10%', left: '15%', flexDirection: 'row-reverse'},
+    exploreImage: exploreImages[1],
     animation: {
         initial: {x: -100, opacity: 0},
         animate: {x: 0, opacity: 1},
         exit: {x: 50, opacity: 0}
     }
 },{
-    name: "Art Centre",
-    style: {top: '20%', left: '50%', height: '55vh', width: '40vw'},
-    image: require("../resources/artcentreimages/wrapping.jpeg"),
+    name: "art centre",
+    style: {top: '20%', left: '50%', height: '55vh', width: '40vw', alignItems: 'flex-start'},
+    exploreImage: exploreImages[2],
     animation: {
         initial: {x: 100, opacity: 0},
         animate: {x: 0, opacity: 1},
         exit: {x: 50, opacity: 0}
     }
 },{
-    name: "Oil Paintings",
-    style: {top: '55%', left: '5%', backgroundColor: 'white'},
-    image: require("../resources/images/Van-Gogh-Self-Portrait.jpg"),
+    name: "oil paintings",
+    style: {top: '55%', left: '5%'},
+    exploreImage: exploreImages[0],
     animation: {
         initial: {x: -100, opacity: 0},
         animate: {x: 0, opacity: 1},
@@ -34,7 +37,7 @@ const services = [{
 const ExplorePage = () => {
     const animation = {
         initial: {scale: 0},
-        animate: {scale: 1, transition: {duration: 1, delayChildren: 1, staggerChildren: .5}},
+        animate: {scale: 1, transition: {delayChildren: .5, staggerChildren: .5}},
         exit: {scale: 0, opacity: 0}
     }
     return <motion.div className={styles.main}>
@@ -44,7 +47,7 @@ const ExplorePage = () => {
         initial="initial" 
         animate="animate" 
         exit="exit">
-            {services.map(service => <ExploreOption image={service.image} animation={service.animation} style={service.style} key={service.name} name={service.name}/>)}
+            {services.map(service => <ExploreOption exploreImage={service.exploreImage} animation={service.animation} style={service.style} key={service.name} name={service.name}/>)}
         </motion.div>
     </motion.div>
 }

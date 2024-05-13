@@ -1,6 +1,6 @@
 import styles from "./Carousal.module.scss";
 import { useState } from "react";
-import {motion} from "framer-motion";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Carousal = ({imagesList}) => {
     const [activatedImage, setActivatedImage] = useState(1);
@@ -17,7 +17,7 @@ const Carousal = ({imagesList}) => {
             visibility: Math.abs(activatedImage - index) < 2? "visible": "hidden",
             opacity: Math.abs(activatedImage - index) < 2? 1: 0
         }}>
-            <img src={image} style={{
+            <LazyLoadImage loading="lazy" src={image} style={{
                 minWidth: "90%",
                 filter: `grayscale(${activatedImage === index? 50: 100}%)`,
                 transform: activatedImage === index? "none": `perspective(400px) rotateY(${index > activatedImage ? 45: -45}deg) scale(0.7)`

@@ -1,15 +1,8 @@
 import styles from "./WebServices.module.scss";
 import AppointmentButton from "../components/AppointmentButton";
 import Carousal from "../globals/Carousal";
+import ImportImages from "../globals/ImageImport";
 
-const importAll = (r) => r.keys().map(r);
-const filesnames = importAll(
-  require.context(
-    "../resources/webservicesimages/",
-    false,
-    /\.(png|jpe?g|svg|webp)$/
-  )
-);
 
 const WebServices = () => {
   return (
@@ -18,7 +11,7 @@ const WebServices = () => {
         <AppointmentButton for="web-services" name="get your own website" />
       </div>
       <div className={styles.gallery}>
-        <Carousal imagesList={filesnames} />
+        <Carousal imagesList={ImportImages("WebServiceImages")} />
       </div>
     </div>
   );
