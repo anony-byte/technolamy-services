@@ -6,7 +6,7 @@ import ImportImages from "../globals/ImageImport";
 const exploreImages = ImportImages("ExploreImages");
 
 const services = [{
-    name: "web sites",
+    name: "web services",
     style: {top: '10%', left: '15%', flexDirection: 'row-reverse'},
     exploreImage: exploreImages[1],
     animation: {

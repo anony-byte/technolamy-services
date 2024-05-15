@@ -3,36 +3,7 @@ import styles from "./ArtCentre.module.scss";
 import { motion, useTransform, useScroll } from "framer-motion";
 import ImageImport from "../../../globals/ImageImport";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
-const filenames = ImageImport("ArtCentreImages");
-
-const services = [
-  {
-    name: "tattoo studio",
-
-    textColor: "white",
-    description:
-      "At Technolamy, we specialize in transforming your visions into remarkable inked masterpieces. Our skilled artists are here to make your tattoo dreams a reality, ensuring that each design tells a unique and compelling story.",
-    // "image": "https://wallpapers.com/images/hd/skeleton-girl-hd-tattoo-f5g3sntxok2nminz.jpg",
-    image: filenames[1],
-  },
-  {
-    name: "wrapping works",
-    // "image": "https://yeahmotor.com/wp-content/uploads/2019/05/carwrap13.jpg",
-    image: filenames[2],
-    textColor: "white",
-    description:
-      "Upgrade your vehicle's look with Technolamy Wraps. We're experts at turning cars, motorcycles, and more into stunning works of art. Explore our options and see your ride transform from the ordinary to the extraordinary.",
-  },
-  {
-    name: "stickering",
-    // "image": "https://c4.wallpaperflare.com/wallpaper/256/284/998/apple-style-wallpaper-preview.jpg",
-    image: filenames[0],
-    textColor: "white",
-    description:
-      "Elevate your ride with Technolamy. We specialize in bike stickers and custom number plate designs that add a touch of uniqueness to your motorcycle. Explore our creative solutions and make your bike stand out on the road",
-  },
-];
+import { artCentreHeaderServices as services } from "../../../globals/Globals";
 
 const ArtCentreHeader = () => {
   const [serviceIndex, setServiceIndex] = useState(0);

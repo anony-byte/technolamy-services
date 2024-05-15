@@ -6,35 +6,7 @@
 .main{
     width: 100vw;
     height: 100vh;
-    // background-image: linear-gradient(to right, grey 1%, transparent 1%) ;
-
-    > .home{
-        width: 100%;
-        height: 100%;
-        // background-color: red;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        // background-image: url('https://w.forfun.com/fetch/cf/cfca63349627b3011a93d400a8d563b7.jpeg');
-        filter: grayscale(100%);
-        opacity: 0.3;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    &::before{
-        content: '';
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        // background-color:rgb(175, 170, 170);
-        height: 2%;
-    }
     box-sizing: border-box;
-
     position: absolute;
     top: 0;
     left: 0;
@@ -51,15 +23,12 @@
     .name{
         position: absolute;
         top: 60%;
-        // left: 50%;
         font-size: 20rem;
         font-weight: bold;
-        // color: rgba(245, 222, 179, 0.346);
         font-family: test;
         z-index: 100;
         mix-blend-mode: difference;
         color: rgb(175, 170, 170);
-        animation: color-changer 2s linear 0 infinite forwards;
     }
 
     .content{
@@ -67,27 +36,26 @@
         width: 60vw;
         word-spacing: .8rem;
         line-height: 5rem;
-        // background-color: red;
         font-size: 2rem;
         left: 5vw;
         top: 5vh;
         color: white;
     }
-
-
 }
-@keyframes color-changer {
-        
-    0%{
-        color: wheat;
-    }
 
-    20%{
-        color: rgb(37, 120, 159);
-    }
+// was placed at the end incase it is useful
 
-    40%{
-        color: rgb(103, 40, 96)
-    }
-    
-}
+// > .home{
+//     width: 10%;
+//     height: 100%;
+//     // background-color: red;
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     // background-image: url('https://w.forfun.com/fetch/cf/cfca63349627b3011a93d400a8d563b7.jpeg');
+//     filter: grayscale(100%);
+//     // opacity: 0.3;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+// }

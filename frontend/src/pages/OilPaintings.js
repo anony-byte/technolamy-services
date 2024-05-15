@@ -12,7 +12,7 @@ const OilPaintings = () => {
   const [imageSelected, setImageSelected] = useState(1);
 
   const imagesList = filenames.map((curr, index) => (
-    <LazyLoadImage
+    <img
       key={curr}
       loading="lazy"
       onClick={() => galleryMovementHandler(index)}
@@ -29,8 +29,6 @@ const OilPaintings = () => {
     },
   ];
 
-  // const [galleryX, setGalleryX] = useState("0%");
-
   const galleryMovementHandler = (index) => {
     galleryRefs.current[index].scrollIntoView({
       behavior: "smooth",
@@ -43,9 +41,11 @@ const OilPaintings = () => {
     <div className={styles.main}>
       <AppointmentButton for="oil-paintings" name="contact for painting" />
       <div className={styles.popular}>
+
         <motion.div className={styles.gallery}>
           <motion.div>{imagesList}</motion.div>
         </motion.div>
+
         <motion.div className={styles.details} key={imageSelected}>
           <motion.div
             className={styles.image}
@@ -55,6 +55,7 @@ const OilPaintings = () => {
           >
             <LazyLoadImage loading="lazy" src={filenames[imageSelected - 1]} />
           </motion.div>
+
           <motion.div
             className={styles.description}
             key={imageSelected}
@@ -68,8 +69,10 @@ const OilPaintings = () => {
               <button>more details</button>
             </motion.div>
           </motion.div>
+
         </motion.div>
       </div>
+
       <Link className={styles.more} to="gallery">
         <button>More paintings &gt; </button>
       </Link>

@@ -12,13 +12,14 @@ import ServiceHeader from "./ServiceHeader";
 import styles from "./ServicesHeader.module.scss";
 import { useLocation } from "react-router";
 import HeaderNavigation from "./HeaderNavigation";
+import HeaderNameStyle from "./HeaderNameStyle";
+import { mainPageRoutes } from "../../globals/Globals";
 
 const services = [
   {
     name: "web services",
     order: 1,
     color: "linear-gradient(to bottom, transparent 40%, rgb(30, 30, 30) 40%)",
-    // 'color': "linear-gradient(yellow, red)",
     styles: {
       width: "8vw",
       height: "100%",
@@ -77,70 +78,26 @@ export default function ServicesHeader(props) {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
 
   const location = useLocation().pathname.split("/")[1];
-  var finalRender =
-    location === "" || location === "explore"
-      ? 0
-      : location.replace("-", " ");
 
-  const [activeTarget, setActiveTarget] = useState(finalRender);
-
-  // useEffect(() => {
-  //   if (props.headerRender !== null) {
-  //     console.log(props.headerRender);
-  //     setActiveTarget(props.headerRender);
-  //   }
-  // }, [props?.headerRender]);
+  const [activeTarget, setActiveTarget] = useState(location.replace("-", " "));
 
   useEffect(() => {
-    console.log(finalRender);
-    setActiveTarget(finalRender);
-  }, [finalRender]);
-
-  const variants = {
-    initial: { x: 1000 },
-    final: { x: 0, transition: { duration: 0.8, type: "spring" } },
-    exit: { x: -5000, transition: { duration: 1 } },
-  };
+    setActiveTarget(location.replace("-", " "));
+  }, [location]);
 
   const setActiveTargetHandler = (target) => setActiveTarget(target);
 
   return (
     <div className={styles.main}>
       <HeaderNavigation />
-      <div className={styles.home}></div>
+      {/* <div className={styles.home}></div> */}
       <AnimatePresence>
-        {activeTarget === 0 && (
-          <motion.div
-            variants={variants}
-            key="technolamy"
-            initial="initial"
-            animate="final"
-            exit="exit"
-            style={{ left: "50%", y, scale }}
-            className={styles.name}
-          >
-            technolamy
-          </motion.div>
-        )}
+        {mainPageRoutes.includes(activeTarget) && <HeaderNameStyle name="technolamy" style={{ left: "50%", y: y, scale: scale }}/>}
         {services.map(
           (curr) =>
-            activeTarget === curr.name && (
-              <motion.div
-                variants={variants}
-                initial="initial"
-                animate="final"
-                exit="exit"
-                key={curr.name}
-                className={styles.name}
-                style={{
-                  left: curr.styles.textLeft,
-                  color: curr.styles.textColor,
-                  y,
-                  scale,
-                }}
-              >
-                {curr.name}
-              </motion.div>
+            activeTarget === curr.name && (<HeaderNameStyle key={curr.name}
+                style={{left: curr.styles.textLeft, color: curr.styles.textColor, y, scale}}
+                name = {curr.name}/>
             )
         )}
       </AnimatePresence>

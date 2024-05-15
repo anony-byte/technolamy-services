@@ -6,12 +6,11 @@ import HomePage from "../../pages/HomePage";
 
 const Home = () => {
   const location = useLocation();
-  console.log(location);
-  
+
   return (
     <div className={styles.main}>
       <div>
-        <Header/>
+        <Header />
       </div>
       <div className={styles.container}>
         {location.pathname == "/" ||

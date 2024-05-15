@@ -3,7 +3,6 @@ import ServicesHeader from "./ServicesHeader";
 
 const Header = () => {
     return <div className={styles.main}>
-        {/* <HomeHeader /> */}
         <ServicesHeader/>
     </div >
 }

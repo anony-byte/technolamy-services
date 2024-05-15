@@ -4,10 +4,7 @@ import styles from "./Explore.module.scss";
 
 const Explore = () => {
     const nav = useNavigate();
-    // const [explorerFullPage, setExplorerFullPage] = useState(false);
     const toggleActiveExplore = () => {
-        // setExplorerFullPage(prev => !prev);
-        // if(!explorerFullPage) 
         nav("/explore");
     }
 
