@@ -18,7 +18,7 @@ export const canvas = [
   },
 ];
 
-export const mainPageRoutes = ["", "explore"];
+export const mainPageRoutes = ["", "explore", "about%20us"];
 
 
 const filenames = ImportImages("ArtCentreImages");

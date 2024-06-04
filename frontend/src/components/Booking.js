@@ -9,8 +9,8 @@ const personalDetails = [
   {
     name: "name",
     type: {
-        name: "input",
-        type: "text"
+      name: "input",
+      type: "text",
     },
     placeholder: "enter your name",
     required: "required",
@@ -18,8 +18,8 @@ const personalDetails = [
   {
     name: "mobile number",
     type: {
-        name: "input",
-        type: "text"
+      name: "input",
+      type: "text",
     },
     placeholder: "enter your mobile number",
     required: "required",
@@ -27,8 +27,8 @@ const personalDetails = [
   {
     name: "email",
     type: {
-        name: "input",
-        type: "text"
+      name: "input",
+      type: "text",
     },
     placeholder: "enter your mail",
     required: "false",
@@ -38,30 +38,42 @@ const personalDetails = [
 const contactForms = [
   {
     name: "oil paintings",
-    form: [...personalDetails, { 
+    form: [
+      ...personalDetails,
+      {
         name: "short description for painting",
         type: {
-            name: "textarea"
+          name: "textarea",
         },
         placeholder: "enter short description for your painting",
-        required: "required"
-    }],
+        required: "required",
+      },
+    ],
   },
   {
     name: "art centre",
-    form: [{
-        name: "Requirement",    
+    form: [
+      {
+        name: "Requirement",
         type: {
-            name: "select",
-            options: ["tattoos", "stickering", "wrapping", "glass filming", "other"]
+          name: "select",
+          options: [
+            "tattoos",
+            "stickering",
+            "wrapping",
+            "glass filming",
+            "other",
+          ],
         },
-        required: "required"
-    },...personalDetails],
+        required: "required",
+      },
+      ...personalDetails,
+    ],
   },
   {
     name: "web services",
     form: [...personalDetails],
-  }
+  },
 ];
 
 const Booking = () => {
@@ -91,9 +103,9 @@ const Booking = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-        <div className={styles.back}>
-            <BackButton/>
-        </div>
+      <div className={styles.back}>
+        <BackButton />
+      </div>
       <motion.div className={styles.options}>
         <LayoutGroup>
           {contactForms.map((curr) => (
@@ -112,7 +124,7 @@ const Booking = () => {
           ))}
         </LayoutGroup>
       </motion.div>
-      {formData && <ContactForm formData={formData}/>}
+      {formData && <ContactForm formData={formData} />}
     </motion.div>
   );
 };

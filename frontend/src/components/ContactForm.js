@@ -1,7 +1,6 @@
 import styles from "./Booking.module.scss";
 import { motion } from "framer-motion";
 import React from "react";
-import BackButton from "./BackButton";
 
 const ContactForm = (props) => {
   const formSubmitHandler = (event) => {
@@ -36,9 +35,10 @@ const ContactForm = (props) => {
               )}
             </div>
           ))}
-          <button type="submit">
-            <span class="material-symbols-outlined">arrow_forward_ios</span>
-          </button>
+          <div className={styles.button}>
+            <button type="submit">submit the form</button>
+          </div>
+          
         </form>
       </motion.div>
       <div className={styles.info}>

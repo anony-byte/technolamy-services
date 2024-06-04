@@ -5,10 +5,6 @@ import {motion} from "framer-motion";
 const BackButton = (props) => {
   const navigator = useNavigate();
   const goBackHandler = () => {
-    if (props?.goBackHandler) {
-      props.goBackHandler();
-      return;
-    }
     navigator(-1);
   };
   
@@ -17,14 +13,10 @@ const BackButton = (props) => {
     initial={{opacity: 0}}
     animate={{opacity: 1}}
     exit={{opacity: 0}}
-    transition={{delay: 0}}
-    className={styles.main} style={{top: props.top || "0", left: props.left || "0"}}>
-      {props?.type === "close" ? <span onClick={goBackHandler} className="material-symbols-outlined">
-        arrow_back
-      </span>:
+    className={styles.main}>
       <span onClick={goBackHandler} className="material-symbols-outlined">
-        close
-      </span>}
+        arrow_back
+      </span>
     </motion.div>
   );
 };

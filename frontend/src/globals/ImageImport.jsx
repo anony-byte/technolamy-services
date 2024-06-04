@@ -34,6 +34,14 @@ const ImportImages = pathType => {
               /\.(png|jpe?g|svg|webp)$/
             )
           );
+    } else if(pathType === "ArtCentreMiniImages"){
+        fileNames = importAll(
+          require.context(
+              "../resources/artcentreminiimages/",
+            false,
+            /\.(png|jpe?g|svg|webp)$/
+          )
+        );
     }
     return fileNames;
 }

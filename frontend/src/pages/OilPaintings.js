@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import ImageImport from "../globals/ImageImport";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import PageRedirectedButton from "../globals/PageRedirectedButton";
 
 const OilPaintings = () => {
   const filenames = ImageImport("Images");
@@ -41,7 +42,6 @@ const OilPaintings = () => {
     <div className={styles.main}>
       <AppointmentButton for="oil-paintings" name="contact for painting" />
       <div className={styles.popular}>
-
         <motion.div className={styles.gallery}>
           <motion.div>{imagesList}</motion.div>
         </motion.div>
@@ -69,13 +69,12 @@ const OilPaintings = () => {
               <button>more details</button>
             </motion.div>
           </motion.div>
-
         </motion.div>
       </div>
 
-      <Link className={styles.more} to="gallery">
-        <button>More paintings &gt; </button>
-      </Link>
+      <div className={styles.more}>
+        <PageRedirectedButton name="More paintings" to="gallery"/>
+      </div>
       <Outlet />
     </div>
   );

@@ -14,7 +14,7 @@ const Routes = createBrowserRouter([
     children: [
       {
         path: "/explore",
-        element: <ExplorePage />
+        element: <ExplorePage />,
       },
       {
         path: "/oil-paintings",
@@ -29,6 +29,10 @@ const Routes = createBrowserRouter([
       {
         path: "/web-services",
         element: <WebServices />,
+      },
+      {
+        path: ":id",
+        element: <Gallery/>
       },
     ],
   },

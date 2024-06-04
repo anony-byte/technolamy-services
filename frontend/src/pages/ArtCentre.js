@@ -1,33 +1,36 @@
 import {motion} from "framer-motion";
 import React from 'react';
-import { Outlet, Link, useParams, useLocation } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import AppointmentButton from "../components/AppointmentButton";
 import styles from "./ArtCentre.module.scss";
+import ImportImages from "../globals/ImageImport";
+
+const images = ImportImages("ArtCentreMiniImages");
 
 const services = [
   {
     "id": 0,
     "name": "tatoo works",
-    "image": "https://pbs.twimg.com/media/CjZs3WSWgAAb6O0.jpg",
+    "image": images[1],
     "description": "At Technolamy, we specialize in transforming your visions into remarkable inked masterpieces. Our skilled artists are here to make your tattoo dreams a reality, ensuring that each design tells a unique and compelling story.",
     "height": 90
   },{
     "id": 1,
     "name": "stickering for vehicles",
-    "image": "https://wallpapercave.com/wp/wp4316527.jpg",
+    // "image": "https://wallpapercave.com/wp/wp4316527.jpg", this is down for now, will see later
+    "image": images[0],
     "description": "",
     "height": 40
   },{
     "id": 2,
     "name": "wrapping",
-    // "image": "https://www.familyhandyman.com/wp-content/uploads/2023/02/GettyImages-1322207311.jpg",
-    "image": "https://www.wrapstyle.com/img/home/slide_3_v4.jpg",
+    "image": images[2],
     "description": "",
     "height": 70
   },{
     "id": 3,
     "name": "glass filming",
-    "image": "https://i.pinimg.com/originals/6d/5d/84/6d5d84a7499aff0211d08afbcda225c0.jpg",
+    "image": images[0],
     "description": "",
     "height": 80
   }

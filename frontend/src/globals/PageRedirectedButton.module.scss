@@ -1,0 +1,30 @@
+.pagebutton{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    > a{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 2rem;
+    text-decoration: none;
+    font-family: Lato;
+    font-size: 2.2rem;
+    width: fit-content;
+    text-transform: uppercase;
+    height: 100%;
+    letter-spacing: 1.3rem;
+    background-color: black;
+    border: none;
+    color: white !important;
+    transition: all 0.5s;
+
+    &:hover{
+        letter-spacing: .8rem;
+        color: gray;
+    }
+}
+}
